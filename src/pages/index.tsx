@@ -1,6 +1,11 @@
 import CardDetails from "../components/CardDetails";
+import Layout from "../components/Layout";
 
 const IndexPage = () => {
-  return <CardDetails />;
+  return (
+    <Layout>
+      <CardDetails />
+    </Layout>
+  );
 };
 export default IndexPage;
