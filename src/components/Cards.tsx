@@ -1,15 +1,18 @@
 import cardBack from "/images/bg-card-back.png";
 import cardFront from "/images/bg-card-front.png";
-import { Box, Stack } from "@chakra-ui/react";
-import Image from "next/image";
+import { Box, Container } from "@chakra-ui/react";
 
 function CardDisplay() {
   return (
-    <Box>
-      <Box>
-        <img src={cardFront.src} className="object-none" />
-        <img src={cardBack.src} className="object-none" />
-      </Box>
+    <Box pos="absolute" ml="-256px" mt="166px">
+      <Container>
+        <Box ml="-100px" boxShadow="2xl">
+          <img src={cardFront.src} className="object-none" />
+        </Box>
+        <Box mt="48px" boxShadow="2xl">
+          <img src={cardBack.src} className="object-none" />
+        </Box>
+      </Container>
     </Box>
   );
 }
