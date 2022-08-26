@@ -11,8 +11,8 @@ export type User = {
 
 export type CardInfo = {
   name: string;
-  number: number;
+  number: string;
   expDateMonth: string;
   expDateYear: string;
-  cvcNumber: number;
+  cvcNumber: string;
 };
