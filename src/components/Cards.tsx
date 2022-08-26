@@ -4,7 +4,7 @@ import { Box, Container } from "@chakra-ui/react";
 
 function CardDisplay() {
   return (
-    <Box pos="absolute" ml="-256px" mt="166px">
+    <Box pos="absolute" ml="-265px" mt="166px">
       <Container>
         <Box ml="-100px" boxShadow="2xl">
           <img src={cardFront.src} className="object-none" />
