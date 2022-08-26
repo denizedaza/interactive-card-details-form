@@ -9,7 +9,7 @@ function CardDisplay() {
         <Box ml="-100px" boxShadow="2xl">
           <img src={cardFront.src} className="object-none" />
         </Box>
-        <Box mt="48px" boxShadow="2xl">
+        <Box mt="36px" boxShadow="2xl">
           <img src={cardBack.src} className="object-none" />
         </Box>
       </Container>
