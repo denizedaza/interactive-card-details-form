@@ -13,10 +13,26 @@ import {
   Button,
 } from "@chakra-ui/react";
 
+import { CardInfo } from "../interfaces/index";
+
 function CardDetails() {
+  const defaultCardInfo: CardInfo = {
+    name: "Jane Appleseed",
+    number: "0000 0000 0000 0000",
+    expDateMonth: "00",
+    expDateYear: "00",
+    cvcNumber: "000",
+  };
+
   return (
     <Box>
-      <Cards />
+      <Cards
+        name={defaultCardInfo.name}
+        number={defaultCardInfo.number}
+        expDateMonth={defaultCardInfo.expDateMonth}
+        expDateYear={defaultCardInfo.expDateYear}
+        cvcNumber={defaultCardInfo.cvcNumber}
+      />
       <Container
         bg="red.400"
         centerContent
