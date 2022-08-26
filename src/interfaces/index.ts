@@ -5,6 +5,14 @@
 // import { User } from 'path/to/interfaces';
 
 export type User = {
-  id: number
-  name: string
-}
+  id: number;
+  name: string;
+};
+
+export type CardInfo = {
+  name: string;
+  number: number;
+  expDateMonth: string;
+  expDateYear: string;
+  cvcNumber: number;
+};
