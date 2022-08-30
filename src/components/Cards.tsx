@@ -39,9 +39,11 @@ function CardDisplay(props: CardInfo) {
           <img src={cardFront.src} className="object-none" />
         </Box>
         <Box mt="36px" boxShadow="2xl">
-          <Box pos="absolute">
-            <Text color="white">{cvcNumber}</Text>
-          </Box>
+          <Flex direction="row" justify="flex-end" color="white">
+            <Box pos="absolute" flex="1" transform="translate(-48px, 105px)">
+              <Text>{cvcNumber}</Text>
+            </Box>
+          </Flex>
           <img src={cardBack.src} className="object-none" />
         </Box>
       </Container>
