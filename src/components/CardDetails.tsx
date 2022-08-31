@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 import Cards from "./Cards";
 import {
   Box,
@@ -16,6 +18,12 @@ import {
 import { CardInfo } from "../interfaces/index";
 
 function CardDetails() {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<CardInfo>();
   const defaultCardInfo: CardInfo = {
     name: "Jane Appleseed",
     number: "0000 0000 0000 0000",
@@ -23,6 +31,8 @@ function CardDetails() {
     expDateYear: "00",
     cvcNumber: "000",
   };
+
+  const [cardInfo, setCardInfo] = useState<CardInfo>(defaultCardInfo);
 
   return (
     <Box>
@@ -69,6 +79,7 @@ function CardDetails() {
               size="lg"
               w="full"
               mt={8}
+              type="submit"
             >
               Confirm
             </Button>
