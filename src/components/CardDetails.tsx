@@ -7,7 +7,6 @@ import {
   FormControl,
   FormLabel,
   FormErrorMessage,
-  FormHelperText,
   VStack,
   Input,
   SimpleGrid,
@@ -41,19 +40,35 @@ function CardDetails() {
 
   const [cardInfo, setCardInfo] = useState<CardInfo>(defaultCardInfo);
 
+  function formatCardNumber(string: string): string {
+    let formattedCardNumber: string = "";
+    // remove spaces with regex
+    string = string.replace(/\s/g, "");
+
+    for (let i = 0; i < string.length; i++) {
+      // add space if modulus of 4 is 0
+      if (i % 4 == 0 && i > 0) {
+        formattedCardNumber = formattedCardNumber.concat(" ");
+      }
+      formattedCardNumber = formattedCardNumber.concat(string[i]);
+    }
+
+    return formattedCardNumber;
+  }
+
   function onSubmit(values: CardInfo) {
     console.log(values);
-    // const newCardInfo = {
-    //   name: values.name,
-    //   number: values.number,
-    //   expDateMonth: values.expDateMonth,
-    //   expDateYear: values.expDateYear,
-    //   cvcNumber: values.cvcNumber,
-    // };
-    // setCardInfo(newCardInfo);
+    const newCardInfo = {
+      name: values.name,
+      number: formatCardNumber(values.number),
+      expDateMonth: values.expDateMonth,
+      expDateYear: values.expDateYear,
+      cvcNumber: values.cvcNumber,
+    };
+    setCardInfo(newCardInfo);
+    console.log(cardInfo);
   }
   console.log(errors);
-  console.log(errors.expDateYear.message);
 
   return (
     <Box>
@@ -71,7 +86,7 @@ function CardDetails() {
       >
         <VStack w="full" h="full" p={10} spacing={10}>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <FormControl>
+            <FormControl isInvalid={Object.keys(errors).length !== 0}>
               <FormLabel>Cardholder Name</FormLabel>
               <Input
                 placeholder="e.g Jane Appleseed"
@@ -149,6 +164,11 @@ function CardDetails() {
                       pattern: /^[0-9]{3}/,
                     })}
                   />
+                  {errors.cvcNumber && (
+                    <FormErrorMessage>
+                      {errors.cvcNumber.message}
+                    </FormErrorMessage>
+                  )}
                 </GridItem>
               </SimpleGrid>
             </FormControl>
