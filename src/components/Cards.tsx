@@ -11,10 +11,9 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { CardInfo } from "../interfaces/index";
-import { CardLogo } from "../icons/Icon";
 
-function CardDisplay(props: CardInfo) {
-  const { name, number, expDateMonth, expDateYear, cvcNumber } = props;
+function CardDisplay(cardDetails: CardInfo) {
+  const { name, number, expDateMonth, expDateYear, cvcNumber } = cardDetails;
 
   return (
     <Box pos="absolute" ml="-265px" mt="166px">
