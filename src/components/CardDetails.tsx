@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import Cards from "./Cards";
 import {
   Box,
@@ -21,7 +21,6 @@ function CardDetails() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<CardInfo>();
   const defaultCardInfo: CardInfo = {
@@ -32,47 +31,127 @@ function CardDetails() {
     cvcNumber: "000",
   };
 
+  // const replacementTestCardInfo = {
+  //   name: "Felicia Leire",
+  //   number: "995184896389101E",
+  //   expDateMonth: "09",
+  //   expDateYear: "00",
+  //   cvcNumber: "123"
+  // }
+
   const [cardInfo, setCardInfo] = useState<CardInfo>(defaultCardInfo);
+
+  function onSubmit(values: CardInfo) {
+    console.log(values);
+    // const newCardInfo = {
+    //   name: values.name,
+    //   number: values.number,
+    //   expDateMonth: values.expDateMonth,
+    //   expDateYear: values.expDateYear,
+    //   cvcNumber: values.cvcNumber,
+    // };
+    // setCardInfo(newCardInfo);
+  }
+  console.log(errors);
+  console.log(errors.expDateYear.message);
 
   return (
     <Box>
       <Cards
-        name={defaultCardInfo.name}
-        number={defaultCardInfo.number}
-        expDateMonth={defaultCardInfo.expDateMonth}
-        expDateYear={defaultCardInfo.expDateYear}
-        cvcNumber={defaultCardInfo.cvcNumber}
+        name={cardInfo.name}
+        number={cardInfo.number}
+        expDateMonth={cardInfo.expDateMonth}
+        expDateYear={cardInfo.expDateYear}
+        cvcNumber={cardInfo.cvcNumber}
       />
       <Container
-        bg="red.400"
         centerContent
         transform="translate(40%, 53%)"
         alignItems="flex-start"
       >
         <VStack w="full" h="full" p={10} spacing={10}>
-          <FormControl>
-            <FormLabel>Cardholder Name</FormLabel>
-            <Input placeholder="e.g Jane Appleseed" type="text" />
-            <FormLabel mt={5}>Card Number</FormLabel>
-            <Input type="number" placeholder="e.g. 1234 5678 9123 0000" />
-            <SimpleGrid columns={2} columnGap={6} rowGap={2}>
-              <GridItem colSpan={1}>
-                <FormLabel mt={5}>Expiry Date (MM/YY)</FormLabel>
-                {/* separate dates into smaller grid */}
-                <SimpleGrid columns={2} columnGap={3}>
-                  <GridItem colSpan={1}>
-                    <Input type="number" placeholder="MM" />
-                  </GridItem>
-                  <GridItem colSpan={1}>
-                    <Input type="number" placeholder="YY" />
-                  </GridItem>
-                </SimpleGrid>
-              </GridItem>
-              <GridItem colSpan={1}>
-                <FormLabel mt={5}>CVC</FormLabel>
-                <Input type="number" placeholder="e.g. 123" />
-              </GridItem>
-            </SimpleGrid>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <FormControl>
+              <FormLabel>Cardholder Name</FormLabel>
+              <Input
+                placeholder="e.g Jane Appleseed"
+                type="text"
+                {...register("name", {
+                  required: "Please enter your name",
+                })}
+              />
+              {errors.name && (
+                <FormErrorMessage>{errors.name.message}</FormErrorMessage>
+              )}
+              <FormLabel mt={5}>Card Number</FormLabel>
+              <Input
+                type="text"
+                placeholder="e.g. 1234 5678 9123 0000"
+                {...register("number", {
+                  required: "Can't be blank",
+                  pattern: {
+                    value: /[0-9]/,
+                    message: "Wrong format, numbers only",
+                  },
+                  maxLength: 16,
+                })}
+              />
+              <SimpleGrid columns={2} columnGap={6} rowGap={2}>
+                <GridItem colSpan={1}>
+                  <FormLabel mt={5}>Expiry Date (MM/YY)</FormLabel>
+                  {/* separate dates into smaller grid */}
+                  <SimpleGrid columns={2} columnGap={3}>
+                    <GridItem colSpan={1}>
+                      <Input
+                        type="number"
+                        placeholder="MM"
+                        {...register("expDateMonth", {
+                          required: "Can't be blank",
+                          max: 12,
+                          maxLength: 2,
+                        })}
+                      />
+                      {errors.expDateMonth && (
+                        <FormErrorMessage>
+                          {errors.expDateMonth.message}
+                        </FormErrorMessage>
+                      )}
+                    </GridItem>
+                    <GridItem colSpan={1}>
+                      <Input
+                        type="number"
+                        placeholder="YY"
+                        {...register("expDateYear", {
+                          required: "Can't be blank",
+                          min: {
+                            value: 22,
+                            message: "Date cannot be less than current year",
+                          },
+                          maxLength: 2,
+                        })}
+                      />
+                      {errors.expDateYear && (
+                        <FormErrorMessage>
+                          {errors.expDateYear.message}
+                        </FormErrorMessage>
+                      )}
+                    </GridItem>
+                  </SimpleGrid>
+                </GridItem>
+                <GridItem colSpan={1}>
+                  <FormLabel mt={5}>CVC</FormLabel>
+                  <Input
+                    type="number"
+                    placeholder="e.g. 123"
+                    {...register("cvcNumber", {
+                      required: "Can't be blank",
+                      maxLength: 3,
+                      pattern: /^[0-9]{3}/,
+                    })}
+                  />
+                </GridItem>
+              </SimpleGrid>
+            </FormControl>
             <Button
               colorScheme="blackAlpha"
               bg="black"
@@ -83,7 +162,7 @@ function CardDetails() {
             >
               Confirm
             </Button>
-          </FormControl>
+          </form>
         </VStack>
       </Container>
     </Box>
