@@ -13,7 +13,9 @@ import {
   GridItem,
   Button,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
+import CompletedForm from "./CompletedForm";
 import { CardInfo } from "../interfaces/index";
 
 function CardDetails() {
@@ -29,6 +31,7 @@ function CardDetails() {
     expDateYear: "00",
     cvcNumber: "000",
   };
+  const router = useRouter();
 
   // const replacementTestCardInfo = {
   //   name: "Felicia Leire",
@@ -66,7 +69,6 @@ function CardDetails() {
       cvcNumber: values.cvcNumber,
     };
     setCardInfo(newCardInfo);
-    console.log(cardInfo);
   }
   console.log(errors);
 
@@ -86,7 +88,7 @@ function CardDetails() {
       >
         <VStack w="full" h="full" p={10} spacing={10}>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <FormControl isInvalid={Object.keys(errors).length !== 0}>
+            <FormControl>
               <FormLabel>Cardholder Name</FormLabel>
               <Input
                 placeholder="e.g Jane Appleseed"
@@ -94,6 +96,7 @@ function CardDetails() {
                 {...register("name", {
                   required: "Please enter your name",
                 })}
+                isInvalid={Object.hasOwn(errors, "name")}
               />
               {errors.name && (
                 <FormErrorMessage>{errors.name.message}</FormErrorMessage>
@@ -110,7 +113,11 @@ function CardDetails() {
                   },
                   maxLength: 16,
                 })}
+                isInvalid={Object.hasOwn(errors, "number")}
               />
+              {errors.number && (
+                <FormErrorMessage>{errors.number.message}</FormErrorMessage>
+              )}
               <SimpleGrid columns={2} columnGap={6} rowGap={2}>
                 <GridItem colSpan={1}>
                   <FormLabel mt={5}>Expiry Date (MM/YY)</FormLabel>
@@ -125,6 +132,7 @@ function CardDetails() {
                           max: 12,
                           maxLength: 2,
                         })}
+                        isInvalid={Object.hasOwn(errors, "expDateMonth")}
                       />
                       {errors.expDateMonth && (
                         <FormErrorMessage>
@@ -144,6 +152,7 @@ function CardDetails() {
                           },
                           maxLength: 2,
                         })}
+                        isInvalid={Object.hasOwn(errors, "expDateYear")}
                       />
                       {errors.expDateYear && (
                         <FormErrorMessage>
@@ -163,6 +172,7 @@ function CardDetails() {
                       maxLength: 3,
                       pattern: /^[0-9]{3}/,
                     })}
+                    isInvalid={Object.hasOwn(errors, "cvcNumber")}
                   />
                   {errors.cvcNumber && (
                     <FormErrorMessage>
