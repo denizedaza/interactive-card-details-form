@@ -98,9 +98,10 @@ function CardDetails() {
                 })}
                 isInvalid={Object.hasOwn(errors, "name")}
               />
-              {errors.name && (
+              <FormErrorMessage>Error Message!!</FormErrorMessage>
+              {/* {errors.name && (
                 <FormErrorMessage>{errors.name.message}</FormErrorMessage>
-              )}
+              )} */}
               <FormLabel mt={5}>Card Number</FormLabel>
               <Input
                 type="text"
@@ -154,11 +155,9 @@ function CardDetails() {
                         })}
                         isInvalid={Object.hasOwn(errors, "expDateYear")}
                       />
-                      {errors.expDateYear && (
-                        <FormErrorMessage>
-                          {errors.expDateYear.message}
-                        </FormErrorMessage>
-                      )}
+                      {/* {errors.expDateYear && ( */}
+                      <FormErrorMessage>Error message</FormErrorMessage>
+                      {/* )} */}
                     </GridItem>
                   </SimpleGrid>
                 </GridItem>
