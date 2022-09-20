@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
 import Cards from "./Cards";
 import {
   Box,
@@ -72,6 +73,10 @@ function CardDetails() {
   }
   console.log(errors);
 
+  function checkIfInvalid(value: string): boolean {
+    return Object.hasOwn(errors, value);
+  }
+
   return (
     <Box>
       <Cards
@@ -86,7 +91,7 @@ function CardDetails() {
         transform="translate(40%, 53%)"
         alignItems="flex-start"
       >
-        <VStack w="full" h="full" p={10} spacing={10}>
+        <VStack w="full" h="full" p={10} spacing="24px">
           <form onSubmit={handleSubmit(onSubmit)}>
             <FormControl>
               <FormLabel>Cardholder Name</FormLabel>
@@ -96,9 +101,9 @@ function CardDetails() {
                 {...register("name", {
                   required: "Please enter your name",
                 })}
-                isInvalid={Object.hasOwn(errors, "name")}
+                isInvalid={checkIfInvalid("name")}
               />
-              <FormErrorMessage>Error Message!!</FormErrorMessage>
+              <div>{errors.name.message}</div>
               {/* {errors.name && (
                 <FormErrorMessage>{errors.name.message}</FormErrorMessage>
               )} */}
@@ -114,7 +119,7 @@ function CardDetails() {
                   },
                   maxLength: 16,
                 })}
-                isInvalid={Object.hasOwn(errors, "number")}
+                isInvalid={checkIfInvalid("number")}
               />
               {errors.number && (
                 <FormErrorMessage>{errors.number.message}</FormErrorMessage>
@@ -133,7 +138,7 @@ function CardDetails() {
                           max: 12,
                           maxLength: 2,
                         })}
-                        isInvalid={Object.hasOwn(errors, "expDateMonth")}
+                        isInvalid={checkIfInvalid("expDateMonth")}
                       />
                       {errors.expDateMonth && (
                         <FormErrorMessage>
@@ -153,10 +158,12 @@ function CardDetails() {
                           },
                           maxLength: 2,
                         })}
-                        isInvalid={Object.hasOwn(errors, "expDateYear")}
+                        isInvalid={checkIfInvalid("expDateYear")}
                       />
                       {/* {errors.expDateYear && ( */}
-                      <FormErrorMessage>Error message</FormErrorMessage>
+                      <FormErrorMessage>
+                        {errors.expDateYear.message}
+                      </FormErrorMessage>
                       {/* )} */}
                     </GridItem>
                   </SimpleGrid>
@@ -171,7 +178,7 @@ function CardDetails() {
                       maxLength: 3,
                       pattern: /^[0-9]{3}/,
                     })}
-                    isInvalid={Object.hasOwn(errors, "cvcNumber")}
+                    isInvalid={checkIfInvalid("cvcNumber")}
                   />
                   {errors.cvcNumber && (
                     <FormErrorMessage>
