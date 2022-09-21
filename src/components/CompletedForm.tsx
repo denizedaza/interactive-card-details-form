@@ -1,5 +1,5 @@
 import { Container, Heading, Text, Button, VStack } from "@chakra-ui/react";
-import completeLogo from "/images/icons/complete.svg";
+import completeLogo from "/images/icon-complete.svg";
 
 function CompletedForm() {
   return (
@@ -9,7 +9,7 @@ function CompletedForm() {
       alignItems="flex-start"
     >
       <VStack>
-        <img src={completeLogo} alt="complete" />
+        <img src={completeLogo.src} alt="complete" />
         <Heading>Thank you!</Heading>
         <Text>We've added your card details</Text>
         <Button colorScheme="blackAlpha" bg="black" size="lg" w="full" mt={8}>
