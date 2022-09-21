@@ -7,7 +7,6 @@ import {
   Container,
   FormControl,
   FormLabel,
-  FormErrorMessage,
   VStack,
   Input,
   SimpleGrid,
@@ -18,6 +17,7 @@ import { useRouter } from "next/router";
 
 import CompletedForm from "./CompletedForm";
 import { CardInfo } from "../interfaces/index";
+import styles from "./CardDetails.module.css";
 
 function CardDetails() {
   const {
@@ -103,10 +103,13 @@ function CardDetails() {
                 })}
                 isInvalid={checkIfInvalid("name")}
               />
-              <div>{errors.name.message}</div>
-              {/* {errors.name && (
-                <FormErrorMessage>{errors.name.message}</FormErrorMessage>
-              )} */}
+              <ErrorMessage
+                errors={errors}
+                name="name"
+                render={({ message }) => (
+                  <p className={styles.error}>{message}</p>
+                )}
+              />
               <FormLabel mt={5}>Card Number</FormLabel>
               <Input
                 type="text"
@@ -121,9 +124,13 @@ function CardDetails() {
                 })}
                 isInvalid={checkIfInvalid("number")}
               />
-              {errors.number && (
-                <FormErrorMessage>{errors.number.message}</FormErrorMessage>
-              )}
+              <ErrorMessage
+                errors={errors}
+                name="number"
+                render={({ message }) => (
+                  <p className={styles.error}>{message}</p>
+                )}
+              />
               <SimpleGrid columns={2} columnGap={6} rowGap={2}>
                 <GridItem colSpan={1}>
                   <FormLabel mt={5}>Expiry Date (MM/YY)</FormLabel>
@@ -135,16 +142,21 @@ function CardDetails() {
                         placeholder="MM"
                         {...register("expDateMonth", {
                           required: "Can't be blank",
-                          max: 12,
+                          max: {
+                            value: 12,
+                            message: "Month is invalid",
+                          },
                           maxLength: 2,
                         })}
                         isInvalid={checkIfInvalid("expDateMonth")}
                       />
-                      {errors.expDateMonth && (
-                        <FormErrorMessage>
-                          {errors.expDateMonth.message}
-                        </FormErrorMessage>
-                      )}
+                      <ErrorMessage
+                        errors={errors}
+                        name="expDateMonth"
+                        render={({ message }) => (
+                          <p className={styles.error}>{message}</p>
+                        )}
+                      />
                     </GridItem>
                     <GridItem colSpan={1}>
                       <Input
@@ -160,11 +172,13 @@ function CardDetails() {
                         })}
                         isInvalid={checkIfInvalid("expDateYear")}
                       />
-                      {/* {errors.expDateYear && ( */}
-                      <FormErrorMessage>
-                        {errors.expDateYear.message}
-                      </FormErrorMessage>
-                      {/* )} */}
+                      <ErrorMessage
+                        errors={errors}
+                        name="expDateYear"
+                        render={({ message }) => (
+                          <p className={styles.error}>{message}</p>
+                        )}
+                      />
                     </GridItem>
                   </SimpleGrid>
                 </GridItem>
@@ -180,11 +194,13 @@ function CardDetails() {
                     })}
                     isInvalid={checkIfInvalid("cvcNumber")}
                   />
-                  {errors.cvcNumber && (
-                    <FormErrorMessage>
-                      {errors.cvcNumber.message}
-                    </FormErrorMessage>
-                  )}
+                  <ErrorMessage
+                    errors={errors}
+                    name="cvcNumber"
+                    render={({ message }) => (
+                      <p className={styles.error}>{message}</p>
+                    )}
+                  />
                 </GridItem>
               </SimpleGrid>
             </FormControl>
