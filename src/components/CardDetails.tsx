@@ -45,9 +45,12 @@ function CardDetails() {
   const [cardInfo, setCardInfo] = useState<CardInfo>(defaultCardInfo);
 
   function formatCardNumber(string: string): string {
+    if (string.includes(" ", 4)) {
+      return string;
+    }
     let formattedCardNumber: string = "";
     // remove spaces with regex
-    string = string.replace(/\s/g, "");
+    // string = string.replace(/\s/g, "");
 
     for (let i = 0; i < string.length; i++) {
       // add space if modulus of 4 is 0
@@ -117,10 +120,15 @@ function CardDetails() {
                 {...register("number", {
                   required: "Can't be blank",
                   pattern: {
-                    value: /[0-9]/,
+                    // value: /^[0-9]*\s*$/,
+                    value: /\d\s*/,
                     message: "Wrong format, numbers only",
                   },
-                  maxLength: 16,
+                  minLength: {
+                    value: 16,
+                    message: "Number is too short",
+                  },
+                  maxLength: 19,
                 })}
                 isInvalid={checkIfInvalid("number")}
               />
@@ -166,7 +174,7 @@ function CardDetails() {
                           required: "Can't be blank",
                           min: {
                             value: 22,
-                            message: "Date cannot be less than current year",
+                            message: "Year can't be less than current",
                           },
                           maxLength: 2,
                         })}
