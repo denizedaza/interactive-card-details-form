@@ -64,7 +64,6 @@ function CardDetails() {
   }
 
   function onSubmit(values: CardInfo) {
-    console.log(values);
     const newCardInfo = {
       name: values.name,
       number: formatCardNumber(values.number),
@@ -73,8 +72,8 @@ function CardDetails() {
       cvcNumber: values.cvcNumber,
     };
     setCardInfo(newCardInfo);
+    router.push("/complete");
   }
-  console.log(errors);
 
   function checkIfInvalid(value: string): boolean {
     return Object.hasOwn(errors, value);
