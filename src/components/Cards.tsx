@@ -1,28 +1,21 @@
 import cardBack from "/images/bg-card-back.png";
 import cardFront from "/images/bg-card-front.png";
 import cardLogo from "/images/card-logo.svg";
-import {
-  Box,
-  Container,
-  Flex,
-  Heading,
-  Stack,
-  Spacer,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Flex, Heading, Spacer, Text } from "@chakra-ui/react";
 import { CardInfo } from "../interfaces/index";
 
 function CardDisplay(cardDetails: CardInfo) {
   const { name, number, expDateMonth, expDateYear, cvcNumber } = cardDetails;
 
   return (
-    <Box pos="absolute" ml="-265px" mt="166px">
-      <Container>
-        <Box ml="-100px" boxShadow="2xl">
+    <Box pos="absolute" ml="-275px" mt="156px">
+      {/* <Container> */}
+      <Box ml="-80px">
+        <Box boxShadow="2xl" borderRadius="lg">
           <Box pos="absolute" p={6}>
             <img src={cardLogo.src} />
-            <Flex direction="column" gap="4" color="white" mt="52px">
-              <Heading as="h3" size="xl" fontSize="35px" color="white">
+            <Flex direction="column" gap="6" color="white" mt="52px">
+              <Heading as="h3" size="xl" fontSize="32px" color="white">
                 {number}
               </Heading>
               <Flex>
@@ -34,18 +27,19 @@ function CardDisplay(cardDetails: CardInfo) {
               </Flex>
             </Flex>
           </Box>
-          {/* base card */}
-          <img src={cardFront.src} className="object-none" />
         </Box>
-        <Box mt="36px" boxShadow="2xl">
-          <Flex direction="row" justify="flex-end" color="white">
-            <Box pos="absolute" flex="1" transform="translate(-48px, 105px)">
-              <Text>{cvcNumber}</Text>
-            </Box>
-          </Flex>
-          <img src={cardBack.src} className="object-none" />
-        </Box>
-      </Container>
+        {/* base card */}
+        <img src={cardFront.src} className="object-none" />
+      </Box>
+      {/* </Container> */}
+      <Box mt="36px" boxShadow="2xl" borderRadius="lg">
+        <Flex direction="row" justify="flex-end" color="white">
+          <Box pos="absolute" flex="1" transform="translate(-48px, 105px)">
+            <Text>{cvcNumber}</Text>
+          </Box>
+        </Flex>
+        <img src={cardBack.src} className="object-none" />
+      </Box>
     </Box>
   );
 }
