@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
-import CompletedForm from "./CompletedForm";
+import ThankYouPage from "./ThankYouPage";
 import { CardInfo } from "../interfaces/index";
 import styles from "./CardDetails.module.css";
 
@@ -33,14 +33,6 @@ function CardDetails() {
     cvcNumber: "000",
   };
   const router = useRouter();
-
-  // const replacementTestCardInfo = {
-  //   name: "Felicia Leire",
-  //   number: "995184896389101E",
-  //   expDateMonth: "09",
-  //   expDateYear: "00",
-  //   cvcNumber: "123"
-  // }
 
   const [cardInfo, setCardInfo] = useState<CardInfo>(defaultCardInfo);
 
@@ -72,7 +64,7 @@ function CardDetails() {
       cvcNumber: values.cvcNumber,
     };
     setCardInfo(newCardInfo);
-    router.push("/complete");
+    router.push("/thank-you");
   }
 
   function checkIfInvalid(value: string): boolean {

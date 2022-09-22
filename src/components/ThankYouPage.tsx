@@ -1,7 +1,7 @@
 import { Container, Heading, Text, Button, VStack } from "@chakra-ui/react";
 import completeLogo from "/images/icon-complete.svg";
 
-function CompletedForm() {
+function ThankYouPage() {
   return (
     <Container
       centerContent
@@ -20,4 +20,4 @@ function CompletedForm() {
   );
 }
 
-export default CompletedForm;
+export default ThankYouPage;
