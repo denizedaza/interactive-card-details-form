@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Box, Container } from "@chakra-ui/react";
+import { Box, Container, VStack } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { useFormContext } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 
 import Cards from "./Cards";
 import { CardInfo } from "../interfaces/index";
 import CardForm from "./CardForm";
+import ThankYouPage from "./ThankYouPage";
 
 function CardDetails() {
   const defaultCardInfo: CardInfo = {
@@ -18,6 +19,12 @@ function CardDetails() {
   const router = useRouter();
 
   const [cardInfo, setCardInfo] = useState<CardInfo>(defaultCardInfo);
+  const [isFormComplete, setIsFormComplete] = useState<boolean>(false);
+  const methods = useForm<CardInfo>();
+  const {
+    handleSubmit,
+    formState: { errors },
+  } = methods;
 
   function formatCardNumber(string: string): string {
     if (
@@ -42,7 +49,7 @@ function CardDetails() {
     return formattedCardNumber;
   }
 
-  function handleSubmit(values: CardInfo) {
+  function handleCardSubmit(values: CardInfo) {
     const newCardInfo = {
       name: values.name,
       number: formatCardNumber(values.number),
@@ -52,6 +59,7 @@ function CardDetails() {
     };
     setCardInfo(newCardInfo);
     // router.push("/thank-you");
+    setIsFormComplete(true);
   }
 
   return (
@@ -68,7 +76,13 @@ function CardDetails() {
         transform="translate(36%, 50%)"
         alignItems="flex-start"
       >
-        <CardForm onSubmit={handleSubmit} />
+        <VStack w="full" h="full" p={10} spacing="24px">
+          <FormProvider {...methods}>
+            <form onSubmit={handleSubmit(handleCardSubmit)}>
+              {isFormComplete ? <ThankYouPage /> : <CardForm />}
+            </form>
+          </FormProvider>
+        </VStack>
       </Container>
     </Box>
   );
