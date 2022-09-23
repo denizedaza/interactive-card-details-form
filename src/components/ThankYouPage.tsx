@@ -10,7 +10,7 @@ function ThankYouPage() {
     >
       <VStack>
         <img src={completeLogo.src} alt="complete" />
-        <Heading>Thank you!</Heading>
+        <Heading>THANK YOU!</Heading>
         <Text>We've added your card details</Text>
         <Button colorScheme="blackAlpha" bg="black" size="lg" w="full" mt={8}>
           Continue
