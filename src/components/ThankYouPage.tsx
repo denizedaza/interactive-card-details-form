@@ -1,7 +1,7 @@
 import { Container, Heading, Text, Button, VStack } from "@chakra-ui/react";
 import completeLogo from "/images/icon-complete.svg";
 
-function ThankYouPage() {
+function ThankYouPage({ onContinueClick }) {
   return (
     <Container
       centerContent
@@ -12,7 +12,14 @@ function ThankYouPage() {
         <img src={completeLogo.src} alt="complete" />
         <Heading>THANK YOU!</Heading>
         <Text>We've added your card details</Text>
-        <Button colorScheme="blackAlpha" bg="black" size="lg" w="full" mt={8}>
+        <Button
+          colorScheme="blackAlpha"
+          bg="black"
+          size="lg"
+          w="full"
+          mt={8}
+          onClick={onContinueClick}
+        >
           Continue
         </Button>
       </VStack>

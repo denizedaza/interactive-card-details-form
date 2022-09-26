@@ -3,7 +3,7 @@ import ThankYouPage from "../../components/ThankYouPage";
 function ThankYouScreen() {
   return (
     <>
-      <ThankYouPage />
+      <ThankYouPage onContinueClick={undefined} />
     </>
   );
 }
