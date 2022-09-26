@@ -11,6 +11,8 @@ import {
   SimpleGrid,
   GridItem,
   Button,
+  NumberInput,
+  NumberInputField,
 } from "@chakra-ui/react";
 
 function CardForm() {
@@ -129,19 +131,19 @@ function CardForm() {
           </GridItem>
           <GridItem colSpan={1}>
             <FormLabel mt={5}>CVC</FormLabel>
-            <Input
-              type="number"
-              placeholder="e.g. 123"
-              {...register("cvcNumber", {
-                required: "Can't be blank",
-                maxLength: 3,
-                pattern: {
-                  value: /\d*/,
-                  message: "Wrong format, numbers only",
-                },
-              })}
-              isInvalid={checkIfInvalid("cvcNumber")}
-            />
+            <NumberInput isInvalid={checkIfInvalid("cvcNumber")}>
+              <NumberInputField
+                placeholder="e.g. 123"
+                {...register("cvcNumber", {
+                  required: "Can't be blank",
+                  maxLength: 3,
+                  pattern: {
+                    value: /\d*/,
+                    message: "Wrong format, numbers only",
+                  },
+                })}
+              />
+            </NumberInput>
             <ErrorMessage
               errors={errors}
               name="cvcNumber"

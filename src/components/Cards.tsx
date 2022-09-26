@@ -19,7 +19,7 @@ function CardDisplay(cardDetails: CardInfo) {
               <Heading as="h3" size="xl" fontSize="32px" color="white">
                 {number}
               </Heading>
-              <Flex>
+              <Flex gap="116px">
                 <Text as="p">{name}</Text>
                 <Spacer />
                 <Text as="p">
