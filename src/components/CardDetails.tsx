@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Box, Container, VStack } from "@chakra-ui/react";
-import { useRouter } from "next/router";
 import { FormProvider, useForm } from "react-hook-form";
 
 import Cards from "./Cards";
@@ -16,7 +15,6 @@ function CardDetails() {
     expDateYear: "00",
     cvcNumber: "000",
   };
-  const router = useRouter();
 
   const [cardInfo, setCardInfo] = useState<CardInfo>(defaultCardInfo);
   const [isFormComplete, setIsFormComplete] = useState<boolean>(false);
@@ -46,7 +44,7 @@ function CardDetails() {
       formattedCardNumber = formattedCardNumber.concat(string[i]);
     }
 
-    return formattedCardNumber;
+    return formattedCardNumber.slice(0, 19);
   }
 
   function handleCardSubmit(values: CardInfo) {
