@@ -47,6 +47,9 @@ function CardForm() {
           placeholder="e.g. 1234 5678 9123 0000"
           {...register("number", {
             required: "Can't be blank",
+            validate: {
+              validCardLength: (num) => num.length <= 19,
+            },
             pattern: {
               // value: /^[0-9]*\s*$/,
               value: /\d\s*/,
@@ -56,7 +59,7 @@ function CardForm() {
               value: 16,
               message: "Number is too short",
             },
-            maxLength: 19,
+            // maxLength: 19,
           })}
           isInvalid={checkIfInvalid("number")}
         />
@@ -81,6 +84,10 @@ function CardForm() {
                       message: "Month is invalid",
                     },
                     maxLength: 2,
+                    pattern: {
+                      value: /\d*/,
+                      message: "Wrong format, numbers only",
+                    },
                   })}
                   isInvalid={checkIfInvalid("expDateMonth")}
                 />
@@ -103,6 +110,10 @@ function CardForm() {
                       message: "Year can't be less than current",
                     },
                     maxLength: 2,
+                    pattern: {
+                      value: /\d*/,
+                      message: "Wrong format, numbers only",
+                    },
                   })}
                   isInvalid={checkIfInvalid("expDateYear")}
                 />
@@ -124,7 +135,10 @@ function CardForm() {
               {...register("cvcNumber", {
                 required: "Can't be blank",
                 maxLength: 3,
-                pattern: /^[0-9]{3}/,
+                pattern: {
+                  value: /\d*/,
+                  message: "Wrong format, numbers only",
+                },
               })}
               isInvalid={checkIfInvalid("cvcNumber")}
             />
