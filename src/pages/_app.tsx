@@ -4,6 +4,7 @@ import "../styles/globals.css";
 const theme = extendTheme({
   fonts: {
     body: `'Space Grotesk', 'sans-serif'`,
+    heading: `'Space Grotesk', 'sans-serif'`,
   },
 });
 

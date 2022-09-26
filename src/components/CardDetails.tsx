@@ -10,7 +10,7 @@ import ThankYouPage from "./ThankYouPage";
 
 function CardDetails() {
   const defaultCardInfo: CardInfo = {
-    name: "Jane Appleseed",
+    name: "Jane Appleseed".toUpperCase(),
     number: "0000 0000 0000 0000",
     expDateMonth: "00",
     expDateYear: "00",
@@ -51,7 +51,7 @@ function CardDetails() {
 
   function handleCardSubmit(values: CardInfo) {
     const newCardInfo = {
-      name: values.name,
+      name: values.name.toUpperCase(),
       number: formatCardNumber(values.number),
       expDateMonth: values.expDateMonth,
       expDateYear: values.expDateYear,
@@ -60,6 +60,10 @@ function CardDetails() {
     setCardInfo(newCardInfo);
     // router.push("/thank-you");
     setIsFormComplete(true);
+  }
+
+  function handleContinueClick() {
+    setIsFormComplete(false);
   }
 
   return (
@@ -79,7 +83,11 @@ function CardDetails() {
         <VStack w="full" h="full" p={10} spacing="24px">
           <FormProvider {...methods}>
             <form onSubmit={handleSubmit(handleCardSubmit)}>
-              {isFormComplete ? <ThankYouPage /> : <CardForm />}
+              {isFormComplete ? (
+                <ThankYouPage onContinueClick={handleContinueClick} />
+              ) : (
+                <CardForm />
+              )}
             </form>
           </FormProvider>
         </VStack>

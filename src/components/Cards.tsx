@@ -10,7 +10,8 @@ function CardDisplay(cardDetails: CardInfo) {
   return (
     <Box pos="absolute" ml="-275px" mt="156px">
       {/* <Container> */}
-      <Box ml="-80px">
+      {/* Card 1 */}
+      <Box ml="-75px">
         <Box boxShadow="2xl" borderRadius="lg">
           <Box pos="absolute" p={6}>
             <img src={cardLogo.src} />
@@ -29,16 +30,17 @@ function CardDisplay(cardDetails: CardInfo) {
           </Box>
         </Box>
         {/* base card */}
-        <img src={cardFront.src} className="object-none" />
+        <img src={cardFront.src} />
       </Box>
       {/* </Container> */}
+      {/* Card 2 */}
       <Box mt="36px" boxShadow="2xl" borderRadius="lg">
         <Flex direction="row" justify="flex-end" color="white">
           <Box pos="absolute" flex="1" transform="translate(-48px, 105px)">
             <Text>{cvcNumber}</Text>
           </Box>
         </Flex>
-        <img src={cardBack.src} className="object-none" />
+        <img src={cardBack.src} />
       </Box>
     </Box>
   );
