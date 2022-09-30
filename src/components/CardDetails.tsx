@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Container, VStack } from "@chakra-ui/react";
+import { Box, Container, Stack, VStack } from "@chakra-ui/react";
 import { FormProvider, useForm } from "react-hook-form";
 
 import Cards from "./Cards";
@@ -66,30 +66,32 @@ function CardDetails() {
 
   return (
     <Box>
-      <Cards
-        name={cardInfo.name}
-        number={cardInfo.number}
-        expDateMonth={cardInfo.expDateMonth}
-        expDateYear={cardInfo.expDateYear}
-        cvcNumber={cardInfo.cvcNumber}
-      />
-      <Container
-        centerContent
-        transform="translate(36%, 50%)"
-        alignItems="flex-start"
-      >
-        <VStack w="full" h="full" p={10} spacing="24px">
-          <FormProvider {...methods}>
-            <form onSubmit={handleSubmit(handleCardSubmit)}>
-              {isFormComplete ? (
-                <ThankYouPage onContinueClick={handleContinueClick} />
-              ) : (
-                <CardForm />
-              )}
-            </form>
-          </FormProvider>
-        </VStack>
-      </Container>
+      <Stack direction={{ base: "column", lg: "row" }}>
+        <Cards
+          name={cardInfo.name}
+          number={cardInfo.number}
+          expDateMonth={cardInfo.expDateMonth}
+          expDateYear={cardInfo.expDateYear}
+          cvcNumber={cardInfo.cvcNumber}
+        />
+        <Container
+          centerContent
+          transform="translate(36%, 50%)"
+          alignItems="flex-start"
+        >
+          <VStack w="full" h="full" p={10} spacing="24px">
+            <FormProvider {...methods}>
+              <form onSubmit={handleSubmit(handleCardSubmit)}>
+                {isFormComplete ? (
+                  <ThankYouPage onContinueClick={handleContinueClick} />
+                ) : (
+                  <CardForm />
+                )}
+              </form>
+            </FormProvider>
+          </VStack>
+        </Container>
+      </Stack>
     </Box>
   );
 }
