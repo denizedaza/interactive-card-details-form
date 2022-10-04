@@ -20,7 +20,7 @@ function FrontCard(props: FrontCardProps) {
     <>
       <Container as="article" className={styles.article}>
         <Box boxShadow="2xl" borderRadius="lg">
-          <Box pos="absolute" p={6}>
+          <Box pos="absolute" p={6} className={styles.card}>
             <img src={cardLogo.src} />
             <Flex direction="column" gap="6" color="white" mt="52px">
               <Heading as="h3" size="xl" fontSize="32px" color="white">
