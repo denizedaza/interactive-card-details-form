@@ -10,7 +10,7 @@ type Props = {
   title?: string;
 };
 
-const useMediaQuery = (width) => {
+const useMediaQuery = (width: number) => {
   const [targetReached, setTargetReached] = useState(false);
 
   const updateTarget = useCallback((e) => {
