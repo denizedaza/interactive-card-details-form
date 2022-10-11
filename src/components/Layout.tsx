@@ -5,6 +5,8 @@ import { Stack } from "@chakra-ui/react";
 import backgroundImg from "/images/bg-main-desktop.png";
 import mobileImg from "/images/bg-main-mobile.png";
 
+import styles from "./Layout.module.css";
+
 type Props = {
   children?: ReactNode;
   title?: string;
@@ -48,7 +50,7 @@ const Layout = ({ children, title = "Interactive Card Details" }: Props) => {
       </Head>
       <header></header>
       <Stack direction={{ base: "column", lg: "row" }}>
-        <Image src={backImg} />
+        <Image src={backImg} className={styles.backImg} />
         {children}
       </Stack>
     </div>
