@@ -4,23 +4,22 @@ import { CardInfo } from "../interfaces/index";
 import FrontCard from "./FrontCard";
 import BackCard from "./BackCard";
 
-function CardDisplay(cardDetails: CardInfo) {
+function Cards(cardDetails: CardInfo) {
   const { name, number, expDateMonth, expDateYear, cvcNumber } = cardDetails;
 
   return (
-    <Box pos="absolute" ml="-275px" mt="156px">
-      <Container ml="-75px">
-        <FrontCard
-          cardholderName={name}
-          cardNumber={number}
-          expDateMonth={expDateMonth}
-          expDateYear={expDateYear}
-        />
-      </Container>
-
+    <Box>
+      {/* <Container> */}
+      <FrontCard
+        cardholderName={name}
+        cardNumber={number}
+        expDateMonth={expDateMonth}
+        expDateYear={expDateYear}
+      />
       <BackCard cvcNumber={cvcNumber} />
+      {/* </Container> */}
     </Box>
   );
 }
 
-export default CardDisplay;
+export default Cards;
