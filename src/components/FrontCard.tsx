@@ -18,8 +18,8 @@ function FrontCard(props: FrontCardProps) {
 
   return (
     <>
-      <Container as="article" className={styles.article}>
-        <Box boxShadow="2xl" borderRadius="lg">
+      <Box as="article">
+        <Box borderRadius="lg" boxShadow="2xl">
           <Box pos="absolute" p={6} className={styles.card}>
             <img src={cardLogo.src} />
             <Flex direction="column" gap="6" color="white" mt="52px">
@@ -27,18 +27,19 @@ function FrontCard(props: FrontCardProps) {
                 {cardNumber}
               </Heading>
               <Flex gap="116px">
-                <Text as="p">{cardholderName}</Text>
+                <Text as="p" fontSize="14px">
+                  {cardholderName}
+                </Text>
                 <Spacer />
-                <Text as="p">
+                <Text as="p" fontSize="14px">
                   {expDateMonth}/{expDateYear}
                 </Text>
               </Flex>
             </Flex>
           </Box>
-
           <Image src={cardFront.src} width={447} height={245} />
         </Box>
-      </Container>
+      </Box>
     </>
   );
 }
