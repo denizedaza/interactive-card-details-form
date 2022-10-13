@@ -67,13 +67,15 @@ function CardDetails() {
   return (
     <Box>
       <Stack direction={{ base: "column", lg: "row" }}>
-        <Cards
-          name={cardInfo.name}
-          number={cardInfo.number}
-          expDateMonth={cardInfo.expDateMonth}
-          expDateYear={cardInfo.expDateYear}
-          cvcNumber={cardInfo.cvcNumber}
-        />
+        <Box pos="absolute" ml="-275px" mt="156px">
+          <Cards
+            name={cardInfo.name}
+            number={cardInfo.number}
+            expDateMonth={cardInfo.expDateMonth}
+            expDateYear={cardInfo.expDateYear}
+            cvcNumber={cardInfo.cvcNumber}
+          />
+        </Box>
         <Container
           centerContent
           transform="translate(36%, 50%)"
