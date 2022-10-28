@@ -4,8 +4,12 @@
   overflow: hidden;
 }
 
-.card{
-  z-index: 100;
+.card {
+  z-index: 10;
   position: relative;
 }
 
+.card-front {
+  z-index: 20;
+  position: relative;
+}
