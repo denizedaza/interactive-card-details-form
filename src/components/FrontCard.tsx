@@ -19,7 +19,12 @@ function FrontCard(props: FrontCardProps) {
   return (
     <>
       <Box as="article">
-        <Box borderRadius="lg" boxShadow="2xl">
+        <Box
+          borderRadius={"xl"}
+          rounded={"md"}
+          maxHeight={"245px"}
+          boxShadow={"2xl"}
+        >
           <Box pos="absolute" p={6} className={styles.card}>
             <img src={cardLogo.src} />
             <Flex direction="column" gap="6" color="white" mt="52px">

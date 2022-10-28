@@ -9,7 +9,13 @@ function BackCard(props) {
 
   return (
     <>
-      <Box boxShadow="2xl" borderRadius="lg">
+      <Box
+        borderRadius={"xl"}
+        rounded={"md"}
+        maxHeight={"245px"}
+        boxShadow={"2xl"}
+        maxWidth={"447px"}
+      >
         <Flex direction="row" justify="flex-end" color="white">
           <Box
             pos="absolute"
