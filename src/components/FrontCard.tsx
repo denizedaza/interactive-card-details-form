@@ -28,15 +28,21 @@ function FrontCard(props: FrontCardProps) {
           <Box pos="absolute" p={6} className={styles.card}>
             <img src={cardLogo.src} />
             <Flex direction="column" gap="6" color="white" mt="52px">
-              <Heading as="h3" size="xl" fontSize="32px" color="white">
+              <Heading
+                as="h3"
+                size="xl"
+                fontSize="32px"
+                color="white"
+                className={styles.text}
+              >
                 {cardNumber}
               </Heading>
               <Flex gap="116px">
-                <Text as="p" fontSize="14px">
+                <Text as="p" fontSize="14px" className={styles.text}>
                   {cardholderName}
                 </Text>
                 <Spacer />
-                <Text as="p" fontSize="14px">
+                <Text as="p" fontSize="14px" className={styles.text}>
                   {expDateMonth}/{expDateYear}
                 </Text>
               </Flex>

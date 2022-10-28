@@ -13,3 +13,7 @@
   z-index: 20;
   position: relative;
 }
+
+.text {
+  letter-spacing: 0.05em;
+}
