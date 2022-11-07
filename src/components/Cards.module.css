@@ -9,11 +9,25 @@
   position: relative;
 }
 
-.card-front {
+.cardFront {
+  z-index: 30;
+  /* position: relative; */
+  margin-right: 5rem;
+}
+
+.cardBack {
   z-index: 20;
-  position: relative;
+  margin-top: 2rem;
+  margin-left: 5rem;
 }
 
 .text {
   letter-spacing: 0.05em;
+}
+
+@media all and (max-width: 768px) {
+  /* .cardFront {
+    max-width: 100%;
+    margin-right: 1rem;
+  } */
 }

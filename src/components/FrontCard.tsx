@@ -1,7 +1,7 @@
 import { Container, Box, Flex, Heading, Spacer, Text } from "@chakra-ui/react";
 import Image from "next/image";
 
-import cardFront from "/images/bg-card-front.png";
+import frontCard from "/images/bg-card-front.png";
 import cardLogo from "/images/card-logo.svg";
 
 import styles from "./Cards.module.css";
@@ -18,7 +18,7 @@ function FrontCard(props: FrontCardProps) {
 
   return (
     <>
-      <Box as="article">
+      <Box as="article" className={styles.cardFront}>
         <Box
           borderRadius={"xl"}
           rounded={"md"}
@@ -48,7 +48,7 @@ function FrontCard(props: FrontCardProps) {
               </Flex>
             </Flex>
           </Box>
-          <Image src={cardFront.src} width={447} height={245} />
+          <Image src={frontCard.src} width={447} height={245} />
         </Box>
       </Box>
     </>

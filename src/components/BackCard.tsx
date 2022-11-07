@@ -8,7 +8,7 @@ function BackCard(props) {
   const { cvcNumber } = props;
 
   return (
-    <>
+    <Box as="article" className={styles.cardBack}>
       <Box
         borderRadius={"xl"}
         rounded={"md"}
@@ -28,7 +28,7 @@ function BackCard(props) {
         </Flex>
         <Image src={cardBack.src} width={447} height={245} />
       </Box>
-    </>
+    </Box>
   );
 }
 
