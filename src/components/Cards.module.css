@@ -22,7 +22,7 @@
 }
 
 .text {
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
 }
 
 @media all and (max-width: 768px) {
