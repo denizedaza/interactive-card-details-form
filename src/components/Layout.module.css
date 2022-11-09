@@ -1,3 +1,13 @@
-.back-img {
+.backImg {
   z-index: -1;
+}
+
+@media screen and (max-width: 768px) {
+  .backImg {
+    /* max-width: 768px; */
+    min-width: 100vw;
+    background-repeat: no-repeat;
+    background-size: fill;
+    height: auto;
+  }
 }

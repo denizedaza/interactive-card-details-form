@@ -39,7 +39,7 @@ const useMediaQuery = (width: number) => {
 
 const Layout = ({ children, title = "Interactive Card Details" }: Props) => {
   const isBreakpoint = useMediaQuery(768);
-  let backImg = isBreakpoint ? mobileImg : backgroundImg;
+  const backImg = isBreakpoint ? mobileImg : backgroundImg;
 
   return (
     <div>
