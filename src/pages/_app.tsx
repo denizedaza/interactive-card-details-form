@@ -6,12 +6,6 @@ const theme = extendTheme({
     body: `'Space Grotesk', 'sans-serif'`,
     heading: `'Space Grotesk', 'sans-serif'`,
   },
-  textStyles: {
-    h3: {
-      letterSpacing: "3600%",
-      decoration: "strikethrough",
-    },
-  },
 });
 
 function MyApp({ Component, pageProps }) {
