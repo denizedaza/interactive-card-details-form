@@ -48,7 +48,12 @@ function FrontCard(props: FrontCardProps) {
               </Flex>
             </Flex>
           </Box>
-          <Image src={frontCard.src} width={447} height={245} />
+          <Image
+            src={frontCard.src}
+            width={447}
+            height={245}
+            layout={"intrinsic"}
+          />
         </Box>
       </Box>
     </>

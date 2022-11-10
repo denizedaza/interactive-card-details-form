@@ -26,7 +26,12 @@ function BackCard(props) {
             <Text>{cvcNumber}</Text>
           </Box>
         </Flex>
-        <Image src={cardBack.src} width={447} height={245} />
+        <Image
+          src={cardBack.src}
+          width={447}
+          height={245}
+          layout={"intrinsic"}
+        />
       </Box>
     </Box>
   );
