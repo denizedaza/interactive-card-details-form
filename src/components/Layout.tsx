@@ -1,7 +1,7 @@
 import React, { ReactNode, useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 import Head from "next/head";
-import { Stack } from "@chakra-ui/react";
+import { Stack, Flex } from "@chakra-ui/react";
 import backgroundImg from "/images/bg-main-desktop.png";
 import mobileImg from "/images/bg-main-mobile.png";
 
@@ -49,10 +49,10 @@ const Layout = ({ children, title = "Interactive Card Details" }: Props) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <header></header>
-      <Stack direction={{ base: "column", lg: "row" }}>
+      <Flex direction={{ base: "column", lg: "row" }}>
         <Image src={backImg} className={styles.backImg} />
         {children}
-      </Stack>
+      </Flex>
     </div>
   );
 };
