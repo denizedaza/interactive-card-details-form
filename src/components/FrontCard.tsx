@@ -30,8 +30,8 @@ function FrontCard(props: FrontCardProps) {
             <Flex direction="column" gap="6" color="white" mt="52px">
               <Heading
                 as="h3"
-                size="xl"
-                fontSize="32px"
+                size={{ base: "lg", lg: "xl" }}
+                fontSize={{ base: "28px", sm: "20px", lg: "32px" }}
                 color="white"
                 className={styles.text}
               >

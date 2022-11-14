@@ -67,7 +67,7 @@ function CardDetails() {
   return (
     <Box>
       <Stack direction={{ base: "column", lg: "row" }}>
-        <Box pos="absolute" ml="-320px" mt="156px">
+        <Box pos="absolute" ml={{ lg: "-320px" }} mt={{ lg: "156px" }}>
           <Cards
             name={cardInfo.name}
             number={cardInfo.number}
